@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'app';
+  num:number=2
   constructor(translateService:TranslateService){
   translateService.setDefaultLang('sp');
   translateService.use('sp')
