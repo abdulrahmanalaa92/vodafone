@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import {TranslateModule,TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpModule, Http} from '@angular/http';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PhoneValidator } from "./shared/custom-validation.directive";
 
 export function CreateTranslateloader(http:Http){
@@ -22,6 +22,8 @@ export function CreateTranslateloader(http:Http){
     BrowserModule,HttpModule,
     FormsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({loader:{useFactory:(CreateTranslateloader),provide:TranslateLoader,deps:[Http]}})
   ],
   providers: [],

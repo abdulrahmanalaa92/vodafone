@@ -3,7 +3,7 @@ import { NG_VALIDATORS, FormControl } from '@angular/forms';
 
 function validatePhoneFactory() {
   return (c: FormControl) => {
-    let PHONE_REGEXP = /(201)[0-9]{9}/i;
+    let PHONE_REGEXP = /(201)[0-9]{9}/;
 
     return PHONE_REGEXP.test(c.value) ? null : {
       validatePhone: {
