@@ -9,13 +9,10 @@ import { ConfigService } from "./config/config.service";
 })
 export class AppComponent {
   title = 'app';
-  // constructor(translateService:TranslateService){
-  // translateService.setDefaultLang('sp');
-  // translateService.use('sp')
-  // }
-  constructor(private configService: ConfigService) {
+  constructor(private configService: ConfigService,translateService:TranslateService) {
+    translateService.setDefaultLang('sp');
+   translateService.use('sp')
   }
-
   webApiBaseUrl: string;
   anyMethod() {
     this.webApiBaseUrl =
