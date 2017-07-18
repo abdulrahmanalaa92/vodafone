@@ -1,3 +1,5 @@
+import { CustomComponentModule } from './custom-component/custom-component.module';
+import { InputTextComponent } from './custom-component/input-text/input-text.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,13 +18,14 @@ export function ConfigLoader(configService: ConfigService) {
 }
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PhoneValidator } from "./shared/custom-validation.directive";
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhoneValidator,
-
+    LoginComponent,
+    PhoneValidator
   ],
   imports: [
     BrowserModule,
