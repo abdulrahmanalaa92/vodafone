@@ -32,7 +32,7 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,CustomComponentModule,
     TranslateModule.forRoot({ loader: { useFactory: (CreateTranslateloader), provide: TranslateLoader, deps: [Http] } })
   ],
   providers: [

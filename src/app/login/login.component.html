@@ -14,14 +14,20 @@
  pristine: {{!loginForm.controls.username.pristine}}
  dirty: {{!loginForm.controls.username.dirty}}
 
-     <input-text formControlName="password" myLabel="Password" 
-     myPlaceholder="enter your password.."  min =8 max=35 [isPassword]='true'></input-text> 
+      <input-text
+       formControlName="password"
+       myLabel="Password" 
+       myPlaceholder="enter your password.."  
+       min =8 
+       max=35 
+     [isPassword]='true'>
+    </input-text>  
      <div [hidden]="!loginForm.controls.password.hasError('required') || !loginForm.controls.password.touched">
         password is required
       </div>
-        <div [hidden]="!loginForm.controls.password.hasError('minlength') && !loginForm.controls.password.hasError('maxlength')">
+         <div [hidden]="!loginForm.controls.password.hasError('minlength') && !loginForm.controls.password.hasError('maxlength')"> 
         Password can not be shorter than 8 characters or longer than 30.
-      </div> 
+      </div>  
 
     </div>
     
