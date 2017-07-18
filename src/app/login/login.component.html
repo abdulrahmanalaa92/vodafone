@@ -10,10 +10,6 @@
         username can not be shorter than 3 characters or longer than 15.
       </div> 
 
- touched: {{loginForm.controls.username.touched}}
- pristine: {{!loginForm.controls.username.pristine}}
- dirty: {{!loginForm.controls.username.dirty}}
-
       <input-text
        formControlName="password"
        myLabel="Password" 
@@ -32,5 +28,5 @@
     </div>
     
   <input  type="submit" class="btn  btn-default" value="login"/>
-  form valid {{loginForm.valid}}
+  <!-- form valid {{loginForm.valid}} -->
 </form>
