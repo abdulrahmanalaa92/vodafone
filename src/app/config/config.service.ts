@@ -10,6 +10,7 @@ export class ConfigService {
             this.http.get(url).map(res => res.json())
                 .subscribe(config => {
                     this.config = config;
+                    debugger;
                     resolve();
                 });
         });
