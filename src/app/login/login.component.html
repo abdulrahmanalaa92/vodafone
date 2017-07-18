@@ -3,10 +3,28 @@
     <input-text formControlName="username" myLabel="User Name"
      myPlaceholder="enter your username.." min =3 max=15
       [isPassword]='false'></input-text>
+      <div [hidden]="!loginForm.controls.username.hasError('required') || !loginForm.controls.username.touched">
+        username is required
+      </div>
+        <div [hidden]="!loginForm.controls.username.hasError('minlength') && !loginForm.controls.username.hasError('maxlength')">
+        username can not be shorter than 3 characters or longer than 15.
+      </div> 
+
+ touched: {{loginForm.controls.username.touched}}
+ pristine: {{!loginForm.controls.username.pristine}}
+ dirty: {{!loginForm.controls.username.dirty}}
 
      <input-text formControlName="password" myLabel="Password" 
-     myPlaceholder="enter your password.." [isPassword]='true'></input-text> 
-  </div>
-  <input type="submit" class="btn  btn-default" value="login"/>
+     myPlaceholder="enter your password.."  min =8 max=35 [isPassword]='true'></input-text> 
+     <div [hidden]="!loginForm.controls.password.hasError('required') || !loginForm.controls.password.touched">
+        password is required
+      </div>
+        <div [hidden]="!loginForm.controls.password.hasError('minlength') && !loginForm.controls.password.hasError('maxlength')">
+        Password can not be shorter than 8 characters or longer than 30.
+      </div> 
+
+    </div>
+    
+  <input  type="submit" class="btn  btn-default" value="login"/>
   form valid {{loginForm.valid}}
 </form>

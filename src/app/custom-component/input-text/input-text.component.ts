@@ -56,7 +56,9 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
 
   }
   mytype: string;
-
+mytouched(){
+  this.touched();
+}
   ngOnInit() {
     this.mytype = this.isPassword ? "password" : "text";
     //  console.log(String(this.isPassword) == "true"?"password" : "text");
