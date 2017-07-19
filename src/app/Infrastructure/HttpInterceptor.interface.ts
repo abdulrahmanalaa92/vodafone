@@ -54,10 +54,10 @@ export class InterceptableHttpService extends Http implements InterceptableHttp 
     _interceptResponse(response: Observable<Response>): Observable<Response> {
         return this._interceptors.post.reduce((o, i) => o.flatMap(_ => i(o)), response);
     }
-    request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-       const req = this._interceptRequest({url, options});
-    return this._interceptResponse(super.request(req.url as string, req.options));
- }
+    // request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
+    //     const req = this._interceptRequest({ url, options });
+    //     return this._interceptResponse(super.request(req.url as string, req.options));
+    // }
     get(url: string, options?: RequestOptionsArgs): Observable<Response> {
         const req = this._interceptRequest({ url, options });
         return this._interceptResponse(super.get(<string>req.url, req.options));
@@ -91,46 +91,45 @@ export class InterceptableHttpService extends Http implements InterceptableHttp 
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
+    private _preInterceptor = new InterceptableStore<RequestInterceptor>(this.http._interceptors.pre);
+    private _postInterceptor = new InterceptableStore<ResponseInterceptor>(this.http._interceptors.post);
 
-  private _preInterceptor = new InterceptableStore<RequestInterceptor>(this.http._interceptors.pre);
-  private _postInterceptor = new InterceptableStore<ResponseInterceptor>(this.http._interceptors.post);
+    constructor( @Inject(Http) private http: InterceptableHttp) {
+    }
 
-  constructor(@Inject(Http) private http: InterceptableHttp) {
-  }
+    request(): Interceptable<RequestInterceptor> {
+        return this._preInterceptor;
+    }
 
-  request(): Interceptable<RequestInterceptor> {
-    return this._preInterceptor;
-  }
-
-  response(): Interceptable<ResponseInterceptor> {
-    return this._postInterceptor;
-  }
+    response(): Interceptable<ResponseInterceptor> {
+        return this._postInterceptor;
+    }
 
 }
 export class InterceptableStore<T extends Interceptor<any, any>> implements Interceptable<T> {
 
-  constructor(private store: T[]) {
-  }
-
-  addInterceptor(interceptor: T): Interceptable<T> {
-    this.store.push(interceptor);
-    return this;
-  }
-
-  removeInterceptor(interceptor: T): Interceptable<T> {
-    this.store.splice(this.store.indexOf(interceptor), 1);
-    return this;
-  }
-
-  clearInterceptors(interceptors: T[] = []): Interceptable<T> {
-    if (interceptors.length > 0) {
-      interceptors.forEach(i => this.removeInterceptor(i));
-    } else {
-      this.store.splice(0);
+    constructor(private store: T[]) {
     }
 
-    return this;
-  }
+    addInterceptor(interceptor: T): Interceptable<T> {
+        this.store.push(interceptor);
+        return this;
+    }
+
+    removeInterceptor(interceptor: T): Interceptable<T> {
+        this.store.splice(this.store.indexOf(interceptor), 1);
+        return this;
+    }
+
+    clearInterceptors(interceptors: T[] = []): Interceptable<T> {
+        if (interceptors.length > 0) {
+            interceptors.forEach(i => this.removeInterceptor(i));
+        } else {
+            this.store.splice(0);
+        }
+
+        return this;
+    }
 
 }
 
