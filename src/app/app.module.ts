@@ -32,7 +32,7 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,CustomComponentModule,
+    ReactiveFormsModule, CustomComponentModule,
     TranslateModule.forRoot({ loader: { useFactory: (CreateTranslateloader), provide: TranslateLoader, deps: [Http] } })
   ],
   providers: [
@@ -48,6 +48,7 @@ import { LoginComponent } from './login/login.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
+  constructor(private _http:Http) {
+      _http.get("");
+  }
 }
- 
