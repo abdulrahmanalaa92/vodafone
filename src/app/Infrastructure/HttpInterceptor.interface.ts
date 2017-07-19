@@ -1,16 +1,21 @@
 import { Interceptable } from './HttpInterceptor.interface';
 import { Injectable, Inject } from '@angular/core';
 import { HttpRequestData, InterceptableHttp } from './HttpInterceptor.interface';
-import { Response, RequestOptions, RequestOptionsArgs, Http, ConnectionBackend } from '@angular/http';
+import { Response,Request, RequestOptions, RequestOptionsArgs, Http, ConnectionBackend } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs';
+
+
 export interface HttpInterceptor {
     request(): Interceptable<RequestInterceptor>;
     response(): Interceptable<ResponseInterceptor>;
 }
+
+
 export interface Interceptor<T, D> {
     (data: T): D;
 }
+
 export type RequestInterceptor = Interceptor<HttpRequestData, HttpRequestData>;
 export type ResponseInterceptor = Interceptor<Observable<Response>, Observable<Response>>;
 
@@ -54,10 +59,10 @@ export class InterceptableHttpService extends Http implements InterceptableHttp 
     _interceptResponse(response: Observable<Response>): Observable<Response> {
         return this._interceptors.post.reduce((o, i) => o.flatMap(_ => i(o)), response);
     }
-    // request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-    //     const req = this._interceptRequest({ url, options });
-    //     return this._interceptResponse(super.request(req.url as string, req.options));
-    // }
+    request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
+        const req = this._interceptRequest({ url, options });
+        return this._interceptResponse(super.request(req.url, req.options));
+    }
     get(url: string, options?: RequestOptionsArgs): Observable<Response> {
         const req = this._interceptRequest({ url, options });
         return this._interceptResponse(super.get(<string>req.url, req.options));
@@ -127,7 +132,6 @@ export class InterceptableStore<T extends Interceptor<any, any>> implements Inte
         } else {
             this.store.splice(0);
         }
-
         return this;
     }
 
