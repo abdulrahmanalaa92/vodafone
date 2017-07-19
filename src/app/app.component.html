@@ -16,14 +16,7 @@
 <div id="main" class="container">
   <div class="row">
     <h2 class="text-center">{{'app.title' | translate}}</h2>
-    <div>{{'submit' | translate}}</div>
     <router-outlet></router-outlet>
-    <!-- <form [formGroup]="form" (ngSubmit)="form.value" novalidate>
-      <input type="text" name="name" formControlName="name">
-      <input type="text" name="phone" formControlName="phone">
-      <input type="submit">
-    </form> -->
-    <!-- {{form.valid}} -->
     <app-login></app-login>
   </div>
 </div>
