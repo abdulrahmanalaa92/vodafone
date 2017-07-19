@@ -6,10 +6,17 @@
     </li>
   </ul>
 </nav>
-<div class="container">
+<div class="header">
+  <div class="logo">
+    <a>
+      <i></i>
+    </a>
+  </div>
+</div>
+<div id="main" class="container">
   <div class="row">
-    <h2>lashnd;kalsndkjl</h2>
-   <div>{{'submit' | translate}}</div>
+    <h2 class="text-center">{{'app.title' | translate}}</h2>
+    <div>{{'submit' | translate}}</div>
     <router-outlet></router-outlet>
     <!-- <form [formGroup]="form" (ngSubmit)="form.value" novalidate>
       <input type="text" name="name" formControlName="name">
@@ -20,3 +27,4 @@
     <app-login></app-login>
   </div>
 </div>
+<footer class="footer">copy right by vodafone spain &copy; {{currentDate}}</footer>

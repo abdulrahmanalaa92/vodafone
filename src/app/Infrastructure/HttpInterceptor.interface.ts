@@ -1,7 +1,7 @@
 import { Interceptable } from './HttpInterceptor.interface';
 import { Injectable, Inject } from '@angular/core';
 import { HttpRequestData, InterceptableHttp } from './HttpInterceptor.interface';
-import { Response,Request, RequestOptions, RequestOptionsArgs, Http, ConnectionBackend } from '@angular/http';
+import { Response, Request, RequestOptions, RequestOptionsArgs, Http, ConnectionBackend } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs';
 
@@ -50,6 +50,8 @@ export class InterceptableHttpService extends Http implements InterceptableHttp 
     protected _defaultOptions: RequestOptions;
     constructor(_backend: ConnectionBackend, _defaultOptions: RequestOptions) {
         super(_backend, _defaultOptions);
+        console.log(_backend);
+        
     }
     _interceptors: PrePostInterceptors = { pre: [], post: [] };
 

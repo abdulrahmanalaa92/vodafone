@@ -11,6 +11,7 @@ import { PhoneValidator } from './shared/custom-validation.directive';
 })
 export class AppComponent {
   title = 'app';
+  currentDate = new Date().getFullYear();
   form: FormGroup;
   getDataInitilized(){
     return this.configService.getConfiguration();

@@ -27,6 +27,8 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
   disabled: boolean;
 
   username: string;
+  @Input()
+  showError: boolean = false;
 
   @Input()
   isPassword: boolean;
@@ -56,9 +58,9 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
 
   }
   mytype: string;
-mytouched(){
-  this.touched();
-}
+  mytouched() {
+    this.touched();
+  }
   ngOnInit() {
     this.mytype = this.isPassword ? "password" : "text";
     //  console.log(String(this.isPassword) == "true"?"password" : "text");
@@ -76,7 +78,7 @@ mytouched(){
   }
 
 
-  
+
   changed($event: Event) {
     this.change(($event.target as HTMLInputElement).value);
   }

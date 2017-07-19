@@ -17,6 +17,9 @@ export function CreateTranslateloader(http: Http) {
 export function ConfigLoader(configService: ConfigService) {
   return () => configService.load(environment.configFile + 'config.json');
 }
+export function CreateInterceptor(backend, defaultOptions) {
+  return new InterceptableHttpService(backend, defaultOptions)
+}
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PhoneValidator } from './shared/custom-validation.directive';
 import { LoginComponent } from './login/login.component';
@@ -46,7 +49,7 @@ import { LoginComponent } from './login/login.component';
   providers: [
     {
       provide: Http,
-      useFactory: (backend, defaultOptions) => new InterceptableHttpService(backend, defaultOptions),
+      useFactory: CreateInterceptor,
       deps: [XHRBackend, RequestOptions]
     },
     ConfigService,
@@ -60,7 +63,9 @@ import { LoginComponent } from './login/login.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private _http:Http) {
-      _http.get("");
+  constructor(private _http: Http) {
+
   }
+
 }
+

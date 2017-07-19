@@ -1,0 +1,69 @@
+.footer{
+    color:white;
+    background-color: #222;
+    text-align: center;
+    padding: 20px;
+    font-size: 1em;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+#main{
+    min-height: 420px;
+    padding-left:100px;
+}
+.logo a::after, .logo a::before {
+    content: '';
+    display: block;
+    background-color: #e60000;
+}
+.logo a::before {
+    position: absolute!important;
+    top: 228px!important;
+    left: -415px;
+    width: 763px;
+    height: 414px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    border-radius: 0 0 35px;
+    z-index: 1!important;
+}
+#header {
+    width: 960px;
+    margin: 0 auto;
+    position: relative;
+}
+.clearfix {
+    zoom: 1;
+    display: block;
+}
+.clearfix::after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.logo i {
+    padding: 1px 0!important;
+    z-index: 1;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: url(/assets/images/mobile_icons.png) -94px -307px no-repeat;
+}
+.logo i {
+    float: left!important;
+    display: block!important;
+    margin-left: 54px;
+}
+.navbar-inverse {
+    padding-left: 80px;
+}

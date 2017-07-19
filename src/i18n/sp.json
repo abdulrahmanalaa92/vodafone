@@ -1,3 +1,6 @@
 {
-    "submit":"presentar"
+    "submit":"presentar",
+    "app":{
+        "title":"welcome to vodafone "
+    }
 }
