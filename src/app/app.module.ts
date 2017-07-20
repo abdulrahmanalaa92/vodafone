@@ -16,7 +16,7 @@ export function CreateTranslateloader(http: Http) {
 export function ConfigLoader(configService: ConfigService) {
   return () => configService.load(environment.configFile + 'config.json');
 }
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule, FormBuilder } from "@angular/forms";
 import { PhoneValidator } from "./shared/custom-validation.directive";
 import { LoginComponent } from './login/login.component';
 
@@ -35,7 +35,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,CustomComponentModule,
     TranslateModule.forRoot({ loader: { useFactory: (CreateTranslateloader), provide: TranslateLoader, deps: [Http] } })
   ],
-  providers: [
+  providers: [FormBuilder,
     ConfigService,
     {
       provide: APP_INITIALIZER,

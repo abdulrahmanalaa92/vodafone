@@ -7,20 +7,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-loginForm: FormGroup;
+  loginForm: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = formBuilder.group({
-      'username': ['', [Validators.required,Validators.minLength(3),Validators.maxLength(15)]],
-      'password': ['', [Validators.required,Validators.minLength(8),Validators.maxLength(30)]]
-  });
-   }
+      'username': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      'password': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]]
+    });
+  }
 
   ngOnInit() {
   }
- login(model: FormGroup,isValid:boolean) {
-    // console.log(model.value);
+
+  public testVar: string = '';
+
+  login(model: FormGroup, isValid: boolean) {
+    console.log(model.value);
     console.log(model.controls.password);
     // console.log(isValid);
-    
+    this.testVar = 'Kireya';
   }
 }

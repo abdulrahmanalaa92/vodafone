@@ -12,16 +12,16 @@ import { PhoneValidator } from './shared/custom-validation.directive';
 export class AppComponent {
   title = 'app';
   form: FormGroup;
-  getDataInitilized(){
-    return this.configService.getConfiguration();
-  }
-  constructor(private fb: FormBuilder, private configService: ConfigService, translateService: TranslateService) {
-    translateService.setDefaultLang('sp');
-    translateService.use('sp');
-    this.form = fb.group({
-      name: ['', Validators.required],
-      phone: ['', PhoneValidator]
+  // getDataInitilized(){
+  //   return this.configService.getConfiguration();
+  // }
+  constructor(/*private fb: FormBuilder, private configService: ConfigService, translateService: TranslateService*/) {
+    // translateService.setDefaultLang('sp');
+    // translateService.use('sp');
+    // this.form = fb.group({
+    //   name: ['', Validators.required],
+    //   phone: ['', PhoneValidator]
 
-    });
+    //});
   }
 }

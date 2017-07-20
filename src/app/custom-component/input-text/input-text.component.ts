@@ -26,10 +26,10 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
   touched: Function;
   disabled: boolean;
 
-  username: string;
+  textValue: string;
 
   @Input()
-  isPassword: boolean;
+  passwordMood: boolean;
 
   @Input()
   myPlaceholder: string;
@@ -56,12 +56,12 @@ export class InputTextComponent implements OnInit, ControlValueAccessor {
 
   }
   mytype: string;
-mytouched(){
+  mytouched(){
   this.touched();
 }
   ngOnInit() {
-    this.mytype = this.isPassword ? "password" : "text";
-    //  console.log(String(this.isPassword) == "true"?"password" : "text");
+    this.mytype = this.passwordMood ? "password" : "text";
+    //  console.log(String(this.passwordMood) == "true"?"password" : "text");
   }
   validate(c: FormControl) {
     //debugger;
